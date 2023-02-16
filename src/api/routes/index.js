@@ -1,8 +1,16 @@
 import users from "./users";
-import express from "express";
+import { Router } from "express";
 
-const APP = express();
+const ROUTE = Router();
 
-APP.use("/users", users);
+ROUTE.get("/", async (req, res) => {
+  res.json({
+    status: true,
+    date: new Date(),
+    message: "Irfan Nurul Susilo Open Api 1.0",
+  });
+});
 
-module.exports = APP;
+ROUTE.use("/users", users);
+
+module.exports = ROUTE;

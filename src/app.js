@@ -11,6 +11,10 @@ import { errorHandler } from "@middleware/error.handler";
 
 const APP = express();
 
+// view engine setup
+APP.set("views", path.join(__dirname, "views"));
+APP.set("view engine", "ejs");
+
 APP.use(logger("dev"));
 APP.use(express.json());
 APP.use(express.urlencoded({ extended: false }));
@@ -18,7 +22,7 @@ APP.use(cookieParser());
 APP.use(cors());
 APP.use(express.static(path.join(__dirname, "public")));
 
-APP.use("/api/v1", indexRoute);
+APP.use("/api", indexRoute);
 APP.use(errorHandler);
 APP.use(notFoundHandler);
 

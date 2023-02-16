@@ -1,11 +1,11 @@
-exports.test = async (req, res) => {
+exports.test = async (req, res, next) => {
   try {
+    const s = s.find();
     return res.json({
       status: true,
       date: new Date(),
       result: {
         data: "Testing",
-        ss: "sss",
       },
     });
   } catch (error) {
