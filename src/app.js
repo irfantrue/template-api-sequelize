@@ -1,25 +1,25 @@
-const EXPRESS = require('express');
-const PATH = require('path');
-const COOKIE_PARSER = require('cookie-parser');
-const LOGGER = require('morgan');
-const CORS = require('cors');
-require('dotenv').config();
+import express from "express";
+import path from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import cors from "cors";
+require("dotenv").config();
 
-const INDEX_ROUTE = require('./api/routes/index');
-const NOT_FOUND_HANDLER = require('./middlewares/not-found-middleware');
-const ERROR_HANDLER = require('./middlewares/error-middleware');
+import indexRoute from "@route";
+import { notFoundHandler } from "@middleware/notFound.handler";
+import { errorHandler } from "@middleware/error.handler";
 
-const APP = EXPRESS();
+const APP = express();
 
-APP.use(LOGGER('dev'));
-APP.use(EXPRESS.json());
-APP.use(EXPRESS.urlencoded({ extended: false }));
-APP.use(COOKIE_PARSER());
-APP.use(CORS());
-APP.use(EXPRESS.static(PATH.join(__dirname, 'public')));
+APP.use(logger("dev"));
+APP.use(express.json());
+APP.use(express.urlencoded({ extended: false }));
+APP.use(cookieParser());
+APP.use(cors());
+APP.use(express.static(path.join(__dirname, "public")));
 
-APP.use('/api/v1', INDEX_ROUTE);
-APP.use(ERROR_HANDLER);
-APP.use(NOT_FOUND_HANDLER);
+APP.use("/api/v1", indexRoute);
+APP.use(errorHandler);
+APP.use(notFoundHandler);
 
 module.exports = APP;

@@ -1,0 +1,22 @@
+{
+  "presets": ["@babel/preset-env", "minify"],
+  "ignore": ["node_module", "public"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@root": "./src",
+          "@config": "./src/config",
+          "@controller": "./src/api/controllers",
+          "@middleware": "./src/middlewares",
+          "@model": "./src/models",
+          "@route": "./src/api/routes/index",
+          "@service": "./src/api/services",
+          "@validation": "./src/validations",
+          "@view": "./src/views"
+        }
+      }
+    ]
+  ]
+}

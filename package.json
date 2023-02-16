@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "dev": "babel-watch ./src/bin/server",
     "start": "nodemon ./src/bin/server"
   },
   "dependencies": {
@@ -20,6 +21,15 @@
     "sequelize": "^6.28.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "babel-preset-minify": "^0.5.2",
+    "babel-watch": "^7.7.2",
+    "eslint": "^8.34.0",
     "sequelize-cli": "^6.6.0"
   }
 }

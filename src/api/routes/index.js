@@ -1,8 +1,8 @@
-const EXPRESS = require('express');
-const APP = EXPRESS();
+import users from "./users";
+import express from "express";
 
-APP.use('/', async (req, res) => {
-  return res.json({ msg: 'OK' });
-});
+const APP = express();
+
+APP.use("/users", users);
 
 module.exports = APP;
