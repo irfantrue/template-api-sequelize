@@ -1,8 +1,12 @@
-const RESPONSE_CODE = require('../helpers/response-code');
-
-exports.errorHandler = (error, req, res,next) => {
+exports.errorHandler = (error, req, res, next) => {
   if (error) {
-    return res.status(500).json(RESPONSE_CODE.internalServerError(error.message));
+    // set locals, only providing error in development
+    res.locals.message = error.message;
+    res.locals.error = req.app.get("env") === "development" ? error : {};
+
+    // render the error page
+    res.status(error.status || 500);
+    return res.render("error");
   }
-    next();
+  next();
 };
